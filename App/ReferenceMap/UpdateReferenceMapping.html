@@ -1,45 +1,45 @@
-﻿<!DOCTYPE html>
-<html ng-app="targetApp">
-<head>
-    <title>Target Mapper</title>
-    <meta charset="utf-8" />
-    <link href="/Content/bootstrap2.min.css" rel="stylesheet" />
-    <link href="/Content/bootstrap-theme.css" rel="stylesheet" />
-    <link href="/Content/app.css" rel="stylesheet" />
-    <script src="/Scripts/jquery-2.2.0.js"></script>
-    <script src="/Scripts/angular.js"></script>
-    <script src="/Scripts/angular-ui/ui-bootstrap.js"></script>
-    <script src="/Scripts/bootstrap.js"></script>
-    <script src="JS/App.js"></script>
-</head>
-<body>
-    <div class="container">
-        <img src="../IMG/bannerBlueSkyPlane.jpg" />
-        <div class="navbar">
-            <div class="navbar-inner">
-                <ul class="nav">
-                    <li><a href="UpdateReferenceMapping.html">Reference Mapping Update</a></li>
-                </ul>
-            </div>
-        </div>
-        <div ng-controller="ReferenceUpdateController">
+﻿<div class="container">
+        <div>
             <div class="row">
-                <div class="span2 navbar-btn">
-                    <strong>Mapping Tables</strong>
-                    <ul class="nav">
-                        <li><a>Class Code</a></li>                    
-                        <li><a>Company</a></li>                    
-                        <li><a>ASL</a></li>                    
-                    </ul>
+                <div class="col-md-2">
+                        <strong>Mapping Tables</strong>
+                        <ul class="nav">
+                            <li><a>Class Code</a></li>
+                            <li><a>Company</a></li>
+                            <li><a>ASL</a></li>
+                        </ul>
                 </div>
-                <div class="span6">
-                    
-                </div>
-                <div class="span4">
-
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-xs-3 ">
+                            row 1, col 1
+                            {{something}}
+                        </div>
+                        <div class="col-xs-3">
+                            row 1, col 2
+                        </div>
+                        <div class="col-xs-3">
+                            row 1, col 3
+                        </div>
+                        <div class="col-xs-3">
+                            row 1, col 4
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            row 2, col 1
+                        </div>
+                        <div class="col-xs-3">
+                            row 2, col 2
+                        </div>
+                        <div class="col-xs-3">
+                            row 2, col 3
+                        </div>
+                        <div class="col-xs-3">
+                            row 2, col 4
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>

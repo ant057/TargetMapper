@@ -3,27 +3,33 @@
 <head>
     <title>Target Mapper</title>
     <meta charset="utf-8" />
-    <link href="/Content/bootstrap2.min.css" rel="stylesheet" />
     <link href="/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/bootstrap2.min.css" rel="stylesheet" />
     <link href="/Content/app.css" rel="stylesheet" />
     <script src="/Scripts/jquery-2.2.0.js"></script>
     <script src="/Scripts/angular.js"></script>
+    <script src="/Scripts/angular-route.js"></script>
     <script src="/Scripts/angular-ui/ui-bootstrap.js"></script>
     <script src="/Scripts/bootstrap.js"></script>
     <script src="JS/App.js"></script>
+    <script src="JS/Controllers/ReferenceMappingController.js"></script>
+    <style>
+        body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:21px;color:#c8c8c8;background-color:#272b30}
+    </style>
 </head>
 <body>
     <div class="container"> 
-        <img src="IMG/bannerBlueSkyPlane.jpg" />
+        <img src="IMG/bannerBlueSkyPlane.jpg" width="100%" />
         <div class="navbar">
             <div class="navbar-inner">
                 <ul class="nav">
-                    <li><a href="ReferenceMap/UpdateReferenceMapping.html">Reference Mapping Update</a></li>
+                    <li><a href="#/UpdateReferenceMapping">Reference Mapping Update</a></li>
                 </ul>
             </div>
         </div>
         <div>
-
+            <ng-view></ng-view>
         </div>
     </div>
 </body>
