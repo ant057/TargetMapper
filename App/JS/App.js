@@ -3,9 +3,9 @@
 var targetApp = angular.module('targetApp', ['ngRoute'])
          .config(function ($routeProvider) {
 
-             $routeProvider.when('/UpdateReferenceMapping',
+             $routeProvider.when('/ReferenceMapping',
                  {
-                     templateUrl: 'ReferenceMap/UpdateReferenceMapping.html',
+                     templateUrl: 'ReferenceMap/ReferenceMapping.html',
                      controller: 'ReferenceMappingController'
                  })
          });

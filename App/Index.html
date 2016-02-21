@@ -5,29 +5,35 @@
     <meta charset="utf-8" />
     <link href="/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="/Content/bootstrap2.min.css" rel="stylesheet" />
-    <link href="/Content/app.css" rel="stylesheet" />
+    <!--<link href="/Content/bootstrap2.min.css" rel="stylesheet" />-->
+    <!--<link href="/Content/app.css" rel="stylesheet" />-->
     <script src="/Scripts/jquery-2.2.0.js"></script>
     <script src="/Scripts/angular.js"></script>
     <script src="/Scripts/angular-route.js"></script>
     <script src="/Scripts/angular-ui/ui-bootstrap.js"></script>
     <script src="/Scripts/bootstrap.js"></script>
     <script src="JS/App.js"></script>
+    <script src="JS/Services/ReferenceMappingData.js"></script>
     <script src="JS/Controllers/ReferenceMappingController.js"></script>
     <style>
-        body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:21px;color:#c8c8c8;background-color:#272b30}
+        body{
+            background-color:gray;
+        }
     </style>
 </head>
 <body>
     <div class="container"> 
-        <img src="IMG/bannerBlueSkyPlane.jpg" width="100%" />
-        <div class="navbar">
-            <div class="navbar-inner">
-                <ul class="nav">
-                    <li><a href="#/UpdateReferenceMapping">Reference Mapping Update</a></li>
+        <div style="padding:4px">
+            <img class="img-thumbnail" style="height:100px" ng-src="IMG/ArgoGroupBlack.png" src="" />
+        </div>
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav">
+                    <li><a href="../App/Index.html">Home</a></li>
+                    <li><a href="#/ReferenceMapping">Reference Mapping</a></li>
                 </ul>
             </div>
-        </div>
+        </nav>
         <div>
             <ng-view></ng-view>
         </div>
