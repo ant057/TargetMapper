@@ -1,0 +1,45 @@
+﻿<div>
+        <div>
+            <div class="row">
+                <div class="col-md-2">
+                    <ul class="nav nav-pills nav-stacked navbar navbar-inverse">
+                        <li class="label"><span class="glyphicon glyphicon-search"></span> Mapping Tables</li>
+                        <li role="presentation"><a>Agent Code</a></li>
+                        <li role="presentation"><a>ASL</a></li>
+                        <li role="presentation"><a>Business Unit</a></li>
+                        <li role="presentation"><a>Class Code</a></li>
+                        <li role="presentation"><a>Company</a></li>
+                        <li role="presentation"><a>Coverage Code</a></li>
+                        <li role="presentation"><a>Program Code</a></li>
+                        <li role="presentation"><a>State Code</a></li>
+                        <li role="presentation"><a>Underwriter Code</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-10">
+                    <div class=""><label class="label"><span class="glyphicon glyphicon-list-alt"></span> {{companyCode.tableName}}</label></div>
+                    <div>
+                        <table class="">
+                            <tr>
+                                <td class="input-sm" style="width:75px"><label class="form-label">ID</label></td>
+                                <td class="input-sm" style="width:85px"><label class="form-label">SRC CODE</label></td>
+                                <td class="input-sm" style="width:300px"><label class="form-label">SRC DESC</label></td>
+                                <td class="input-sm" style="width:85px"><label class="form-label">TRG CODE</label></td>
+                                <td class="input-sm" style="width:300px"><label class="form-label">TRG DESC</label></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <form name="referenceDataForm" class="form-inline">
+                        <div class="" ng-repeat="data in companyCode.data">
+                            <input class="form-control input-sm" style="width:75px" required readonly type="text" ng-model="data.id" />
+                            <input class="form-control input-sm" style="width:85px"required readonly type="text" ng-model="data.sourceSystemCode" />
+                            <input class="form-control input-sm" style="width:300px" required readonly type="text" ng-model="data.sourceSystemDesc" />
+                            <input class="form-control input-sm" style="width:85px" required type="text" ng-model="data.targetSystemCode" />
+                            <input class="form-control input-sm" style="width:300px" required type="text" ng-model="data.targetSystemDesc" />
+                            <button class="btn btn-primary btn-sm" ng-disabled="referenceDataForm.$invalid" 
+                                    ng-click="updateRow(data, referenceDataForm)">Update</button> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
