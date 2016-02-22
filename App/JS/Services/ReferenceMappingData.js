@@ -1,31 +1,15 @@
-﻿targetApp.factory('referenceMappingData', function ($http, $log) {
+﻿targetApp.factory('referenceMappingData', function ($http, $log, $resource) {
+
+    var resource = $resource('http://localhost:51872/ReferenceMapping/:id', { id: '@id' });
 
     return  {
-        tableData: {
-            "tableName": "Company Code",
-            "data": [
-                {
-                    "id": 10001,
-                    "sourceSystemCode": "24",
-                    "sourceSystemDesc": "ARGONAUT MIDWEST INSURANCE COMPANY",
-                    "targetSystemCode": "24",
-                    "targetSystemDesc": "ARGONAUT MIDWEST INSURANCE COMPANY"
-                },
-                {
-                    "id": 10002,
-                    "sourceSystemCode": "23",
-                    "sourceSystemDesc": "ARGONAUT INSURANCE COMPANY",
-                    "targetSystemCode": "23",
-                    "targetSystemDesc": "ARGONAUT INSURANCE COMPANY"
-                },
-                {
-                    "id": 10003,
-                    "sourceSystemCode": "01", 
-                    "sourceSystemDesc": "COLONY INSURANCE COMPANY",
-                    "targetSystemCode": "01",
-                    "targetSystemDesc": "COLONY INSURANCE COMPANY"
-                }
-            ]
+        getData: function () {
+            //return $http({
+            //    method: 'GET',
+            //    url: 'http://localhost:62284/event/1'
+            //});
+
+            return resource.get({ id: 1 });
         },
 
         update: function (rowData) {
