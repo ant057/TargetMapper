@@ -1,20 +1,30 @@
 ﻿targetApp.factory('referenceMappingData', function ($http, $log, $resource) {
 
-    var resource = $resource('http://localhost:51872/ReferenceMapping/:id', { id: '@id' });
+    var host = location.protocol + '//' + location.host;
+
+    var resource = $resource(host + '/TargetMapperData/api/ReferenceMapping/:id', { id: '@id' });
+    var putResource = $resource(host + '/TargetMapperData/api/ReferenceMapping/:id', { id: '@id' }, { 'update': {method:'PUT'}});
 
     return  {
-        getData: function () {
-            //return $http({
-            //    method: 'GET',
-            //    url: 'http://localhost:62284/event/1'
-            //});
-
-            return resource.get({ id: 1 });
+        getData: function (table) {
+            
+            return resource.get({ id: table });
         },
 
-        update: function (rowData) {
-            $log.log(rowData);
-            $log.log('this is updating..but what is??');
+        getDataHTTP: function(){
+
+            return $http({
+                method: 'GET',
+                url: 'http://localhost:40611/TargetMapperData/api/ReferenceMapping/CompanyCode'
+            });
+        },
+
+        updateData: function (table, rowData) {
+
+                $log.log('updating..');
+                $log.log(rowData);
+
+                return putResource.update({ id: table }, rowData);
         }
-    };
+    }
 });

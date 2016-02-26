@@ -10,6 +10,7 @@
     <script src="/Scripts/jquery-2.2.0.js"></script>
     <script src="/Scripts/angular.js"></script>
     <script src="/Scripts/angular-resource.js"></script>
+    <script src="/Scripts/angular-animate.js"></script>
     <script src="/Scripts/angular-route.js"></script>
     <script src="/Scripts/angular-ui/ui-bootstrap.js"></script>
     <script src="/Scripts/bootstrap.js"></script>
@@ -20,12 +21,36 @@
         body{
             background-color:gray;
         }
+        .left-inner-addon {
+            position: relative;
+        }
+        .left-inner-addon input {
+            padding-left: 30px;    
+        }
+        .left-inner-addon i {
+            position: absolute;
+            padding: 10px 12px;
+            pointer-events: none;
+        }
+
+        .right-inner-addon {
+            position: relative;
+        }
+        .right-inner-addon input {
+            padding-right: 30px;    
+        }
+        .right-inner-addon i {
+            position: absolute;
+            right: 0px;
+            padding: 10px 12px;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
     <div class="container"> 
         <div style="padding:4px">
-            <img class="img-thumbnail" style="height:100px" ng-src="IMG/ArgoGroupBlack.png" src="" />
+            <img class="img-thumbnail" style="height:100px" src="../App/IMG/ArgoGroupBlack.png" />
         </div>
         <nav class="navbar navbar-inverse navbar-collapse">
             <div class="navbar-header">

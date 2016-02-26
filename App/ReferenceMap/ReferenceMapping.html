@@ -4,39 +4,64 @@
                 <div class="col-md-2">
                     <ul class="nav nav-pills nav-stacked navbar navbar-inverse">
                         <li class="label"><span class="glyphicon glyphicon-search"></span> Mapping Tables</li>
-                        <li role="presentation"><a>Agent Code</a></li>
-                        <li role="presentation"><a>ASL</a></li>
-                        <li role="presentation"><a>Business Unit</a></li>
-                        <li role="presentation"><a>Class Code</a></li>
-                        <li role="presentation"><a>Company</a></li>
-                        <li role="presentation"><a>Coverage Code</a></li>
-                        <li role="presentation"><a>Program Code</a></li>
-                        <li role="presentation"><a>State Code</a></li>
-                        <li role="presentation"><a>Underwriter Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Agent Code')">Agent Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('ASL Code')">ASL</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Business Unit Code')">Business Unit</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Catastrophe Code')">Catastrophe Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Class Code')">Class Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Company Code')">Company Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('County Unit Code')">County Unit Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Coverage Code')">Coverage Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Groupline Code')">Groupline Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Management Code')">Mgmt Segment Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Program Code')">Program Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('State Code')">State Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Subline Code')">Subline Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Territory Code')">Territory Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Underwriter Code')">Underwriter Code</a></li>
+                        <li role="presentation"><a ng-click="getTableData('Userline Code')">Userline Code</a></li>
                     </ul>
                 </div>
-                <div class="col-md-10">
-                    <div class=""><h4><span class="glyphicon glyphicon-list-alt"></span> {{companyCode.tableName}}</h4></div>
-                    <div>
-                        <table class="">
-                            <tr>
-                                <td class="input-sm" style="width:75px"><label class="form-label">ID</label></td>
-                                <td class="input-sm" style="width:85px"><label class="form-label">SRC CODE</label></td>
-                                <td class="input-sm" style="width:300px"><label class="form-label">SRC DESC</label></td>
-                                <td class="input-sm" style="width:85px"><label class="form-label">TRG CODE</label></td>
-                                <td class="input-sm" style="width:300px"><label class="form-label">TRG DESC</label></td>
-                            </tr>
-                        </table>
-                    </div>
+                <div class="col-md-10 well" id="tableDiv">
                     <form name="referenceDataForm" class="form-inline">
-                        <div class="" ng-repeat="data in companyCode.data">
-                            <input class="form-control input-sm" style="width:75px" required readonly type="text" ng-model="data.id" />
-                            <input class="form-control input-sm" style="width:85px"required readonly type="text" ng-model="data.sourceSystemCode" />
-                            <input class="form-control input-sm" style="width:300px" required readonly type="text" ng-model="data.sourceSystemDesc" />
-                            <input class="form-control input-sm" style="width:85px" required type="text" ng-model="data.targetSystemCode" />
-                            <input class="form-control input-sm" style="width:300px" required type="text" ng-model="data.targetSystemDesc" />
-                            <button class="btn btn-primary btn-sm" ng-disabled="referenceDataForm.$invalid" 
-                                    ng-click="updateRow(data, referenceDataForm)">Update</button> 
+                        <div class="rows">
+                            <div class="col-md-12" id="updateDiv">
+                                <div class="alert {{updateClass}}" ng-show="updateResult"><strong>{{updatePhrase}}</strong></div>
+                            </div>
+                            <div class="col-md-9" ng-hide="tableDiv">
+                                <h4><span class="glyphicon glyphicon-list-alt"></span> {{companyCode.tableName}}</h4>
+                            </div>
+                            <div class="col-md-3 right-inner-addon" ng-hide="tableDiv">
+                                <i class="glyphicon glyphicon-search"></i>
+                                <input type="text" class="form-control" ng-model="searchText" ng-change="searchChanged()" placeholder="Search.." />
+                            </div>
+                            <div class="col-md-10 spinner-icon" ng-show="loading">
+                                <img src="/App/IMG/InternetSlowdown_Day.gif" style="height:30px" />
+                            </div>
+                        </div>
+                        <div ng-hide="tableDiv">
+                            <table class="">
+                                <tr>
+                                    <td class="input-sm" style="width:65px"><label class="form-label">ID</label></td>
+                                    <td class="input-sm" style="width:65px"><label class="form-label">SOURCE SYSTEM</label></td>
+                                    <td class="input-sm" style="width:65px"><label class="form-label">SRC CODE</label></td>
+                                    <td class="input-sm" style="width:250px"><label class="form-label">SRC DESC</label></td>
+                                    <td class="input-sm" style="width:85px"><label class="form-label">TRG CODE</label></td>
+                                    <td class="input-sm" style="width:250px"><label class="form-label">TRG DESC</label></td>
+                                </tr>
+                            </table>
+                            <div ng-repeat="data in companyCode.data | filter:searchText | limitTo:50">
+                                <input class="form-control input-sm" style="width:65px" readonly type="text" ng-model="data.id" />
+                                <input class="form-control input-sm" style="width:65px" required readonly type="text" ng-model="data.sourceSystem" />
+                                <input class="form-control input-sm" style="width:65px" readonly type="text" ng-model="data.sourceSystemCode" />
+                                <input class="form-control input-sm" style="width:250px" readonly type="text" ng-model="data.sourceSystemDesc" />
+                                <input class="form-control input-sm" style="width:85px" required type="text" ng-model="data.targetSystemCode" />
+                                <input class="form-control input-sm" style="width:250px" required type="text" ng-model="data.targetSystemDesc" />
+                                <button class="btn btn-primary btn-sm" ng-disabled="referenceDataForm.$invalid"
+                                        ng-click="updateRow(companyCode.tableName, data, referenceDataForm)">
+                                    Update
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
